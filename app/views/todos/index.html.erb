@@ -1,10 +1,10 @@
 <main class="TodoPageMain">
   <h1 class="TodoPage-title">My Todo-List</h1>
-  <section class="AddTodo">
-    <input class = "AddTodo-text" type="text" placeholder="What's next?">
-    <input class = "AddTodo-date" type="date">
-    <input class = "AddTodo-button" type="button" value="Add">
-  </section>
+  <%= form_with(url: "/todos", method: "post", class: "AddTodo") do %>
+    <%= text_field_tag 'todo_text', nil, class: 'AddTodo-text',  placeholder: "What's next?", required: true %>
+    <%= date_field_tag 'due_date', Date.today.to_s, class: 'AddTodo-date'%>
+    <%= submit_tag "Add", class: "AddTodo-button" %>
+  <%end%>
   <%= render partial: "todo-section", locals: {
              selction_title: "Overdue",
              todos: Todo.overdue.completed(false),
