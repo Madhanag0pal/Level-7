@@ -22,11 +22,4 @@ class Todo < ApplicationRecord
   def self.completed(status = true)
     all.where(completed: status)
   end
-
-  def self.mark_as_complete!(id)
-    todo = find(id)
-    todo.completed = !todo.completed
-    todo.save!
-    todo
-  end
 end
