@@ -1,12 +1,4 @@
 class Todo < ApplicationRecord
-  def due_today?
-    due_date == Date.today
-  end
-
-  def self.add_task(h)
-    Todo.create!(todo_text: h[:todo_text], due_date: Date.today + h[:due_in_days], completed: false)
-  end
-
   def self.overdue
     where("due_date < ?", Date.today)
   end
