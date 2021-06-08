@@ -4,13 +4,11 @@ class TodosController < ApplicationController
 
   def show
     todo = Todo.find(params[:id])
-    render plain: todo.to_displayable_string
+    render plain: todo
   end
 
   def update
-    todo = Todo.find(params[:id])
-    todo.completed = params[:completed]
-    todo.save!
+    Todo.update(params[:id], completed: params[:completed])
     redirect_to todos_path
   end
 
@@ -29,7 +27,7 @@ class TodosController < ApplicationController
   end
 
   def login
-    user = User.find_by(email: params[:email])
-    render plain: !!user && user.password == params[:password]
+    user = User.find_by(email: params[:email], password: params[:password])
+    render plain: !!user # returns false if user is nil
   end
 end
