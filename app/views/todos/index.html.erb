@@ -7,7 +7,7 @@
   <%end%>
   <%= render partial: "todo-section", locals: {
              selction_title: "Overdue",
-             todos: Todo.overdue.completed(false),
+             todos: Todo.overdue,
              show_date: true,
            } %>
   <%= render partial: "todo-section", locals: {
