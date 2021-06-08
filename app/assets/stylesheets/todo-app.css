@@ -110,7 +110,7 @@ body {
   text-decoration: line-through;
 }
 
-.TodoItem-delete > form > input[type="image"] {
+.TodoItem-delete > input[type="image"] {
   width: 16px;
 }
 
